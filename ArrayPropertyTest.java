@@ -74,34 +74,51 @@ public class ArrayPropertyTest {
 		array_set = null;
 	}
 
+	/* Check that class type is invariant upon 
+	   sorting an array */
 
 	@Test
 	public void checkClassType() {
 
-		int counter = 0;
-
 		for (int[] element: array_set) {
-			System.out.printf("%d\n", counter);	
 			Arrays.sort(element);
 			assertTrue(element instanceof int[]);
-			counter++;	
 		}
 	}
-
+	
+	/* Check that length is invariant upon
+	   sorting an array */
 	@Test
 	public void checkLength() {
 		
-		int counter = 0;
 		int initial_length = 0;
 		int final_length = 0;
 
 		for (int[] element: array_set) {
-			System.out.printf("%d\n", counter);
 			initial_length = element.length;
 			Arrays.sort(element);
 			final_length = element.length;
 			assertEquals(initial_length, final_length);
-			counter++;
+		}
+	}
+
+
+	/* A test to check that Arrays.sort() sorts arrays
+	   into ascending order */
+	@Test
+	public void checkSorted() {
+		
+		int i;
+
+		int initial_length = 0;
+		int final_length = 0;
+
+		for (int[] element: array_set) {
+			Arrays.sort(element);
+			
+			for (i = 0; i < element.length-1; i++) {
+				assertTrue(element[i] <= element[i+1]);	
+			}	
 		}
 	}
 
