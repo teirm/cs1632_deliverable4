@@ -4,6 +4,8 @@ Purpose: A driver for ArrayPropertyTest */
 
 public class TestRunner {
 
+	ArrayPropertyTest test_set;
+
 	public static void main (String[] args) {
 
 		int cardinality;	
@@ -12,9 +14,9 @@ public class TestRunner {
 		cardinality = 100;
 		time = System.currentTimeMillis();
 		ArrayPropertyTest test_set = new ArrayPropertyTest(time);
-		
 		test_set.generate_set(cardinality);
-
-		test_set.print_set();	
+	
+		org.junit.runner.JUnitCore.main("TestRunner");
 	}
+
 }

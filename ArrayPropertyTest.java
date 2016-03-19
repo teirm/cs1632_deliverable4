@@ -24,11 +24,6 @@ public class ArrayPropertyTest {
 	ArrayList<int[]> array_set;
 	Random prng;
 
-	public ArrayPropertyTest(long seed) {
-		array_set = new ArrayList<int[]>();	
-		prng = new Random(seed);
-	}
-
 	public boolean generate_set(int cardinality) {
 
 		int i;
@@ -41,7 +36,6 @@ public class ArrayPropertyTest {
 
 		for (i = 0; i < cardinality; i++) {
 			length = Math.abs(prng.nextInt()%modulus);
-			System.out.printf("%d\n", length);
 			int[] a = new int[length];
 			
 			for (j = 0; j < a.length; j++) {
@@ -58,6 +52,61 @@ public class ArrayPropertyTest {
 		for (int[] element: array_set) {
 			System.out.printf("%s\n", Arrays.toString(element));
 		}
+	}
+
+	@Before
+	public void setup() throws Exception {
+		
+		int cardinality;
+		long time;
+
+		cardinality = 100;
+		time = System.currentTimeMillis();
+		prng = new Random(time);
+		array_set = new ArrayList<int[]>();
+		generate_set(cardinality);	
+	}
+
+
+	@After
+	public void teardown() throws Exception {
+		
+		array_set = null;
+	}
+
+
+	@Test
+	public void checkClassType() {
+
+		int counter = 0;
+
+		for (int[] element: array_set) {
+			System.out.printf("%d\n", counter);	
+			Arrays.sort(element);
+			assertTrue(element instanceof int[]);
+			counter++;	
+		}
+	}
+
+	@Test
+	public void checkLength() {
+		
+		int counter = 0;
+		int initial_length = 0;
+		int final_length = 0;
+
+		for (int[] element: array_set) {
+			System.out.printf("%d\n", counter);
+			initial_length = element.length;
+			Arrays.sort(element);
+			final_length = element.length;
+			assertEquals(initial_length, final_length);
+			counter++;
+		}
+	}
+
+	public static void main(String[] args) {
+		org.junit.runner.JUnitCore.main("ArrayPropertyTest");
 	}
 
 }
