@@ -34,11 +34,14 @@ public class ArrayPropertyTest {
 		int i;
 		int j;
 		int length;
+		int modulus;
 
 		length = 0;
+		modulus = 1000;
 
 		for (i = 0; i < cardinality; i++) {
-			length = prng.nextInt();
+			length = Math.abs(prng.nextInt()%modulus);
+			System.out.printf("%d\n", length);
 			int[] a = new int[length];
 			
 			for (j = 0; j < a.length; j++) {
@@ -51,6 +54,10 @@ public class ArrayPropertyTest {
 		return true;	
 	}	
 
-
+	public void print_set() {
+		for (int[] element: array_set) {
+			System.out.printf("%s\n", Arrays.toString(element));
+		}
+	}
 
 }
