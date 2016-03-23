@@ -5,5 +5,7 @@ Property Based Testing of arrays.
 
 Presumed invariants tested
 	Class Type (Arrays -> Arrays)
+
 	Length
-	Element Type (int -> int)
+	
+	Sorted (a[i] <= a[i+1])	
