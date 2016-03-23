@@ -32,7 +32,7 @@ public class ArrayPropertyTest {
 		int modulus;
 
 		length = 0;
-		modulus = 1000;
+		modulus = 100000;
 
 		for (i = 0; i < cardinality; i++) {
 			length = Math.abs(prng.nextInt()%modulus);
@@ -60,7 +60,7 @@ public class ArrayPropertyTest {
 		int cardinality;
 		long time;
 
-		cardinality = 100;
+		cardinality = 1000;
 		time = System.currentTimeMillis();
 		prng = new Random(time);
 		array_set = new ArrayList<int[]>();
