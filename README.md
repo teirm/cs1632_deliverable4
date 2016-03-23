@@ -4,6 +4,7 @@ Code for CS1632_Deliverable4
 Property Based Testing of arrays.
 
 Presumed invariants tested
+
 	Class Type (Arrays -> Arrays)
 
 	Length
